@@ -1,0 +1,16 @@
+version: '2'
+volumes:
+  resin-data:
+services:
+  network-check:
+    build:
+      context: ./network-check
+      dockerfile: Dockerfile
+    volumes:
+      - 'resin-data:/data'
+    restart: 'no'
+    environment:
+      - 'REGISTRY_ENDPOINT=https://registry2.balena-cloud.com'
+      - 'API_ENDPOINT=https://api.balena-cloud.com'
+    privileged: false
+
